@@ -20,8 +20,9 @@ Route::get('/user/evaluasi1', function () {
 });
 
 Route::get('/home1', function () {
-    return view('peserta\home1');
+    return view('peserta.home1');
 });
+
 
 Route::get('/admin/jadwal', function () {
     return view('admin\jadwal\jadwal');

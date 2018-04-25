@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('peserta\home');
+        return view('peserta.home');
     }
 }

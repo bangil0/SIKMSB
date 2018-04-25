@@ -46,7 +46,7 @@
               <div class="form-group has-feedback">
                 {{ csrf_field() }}
                 <!----- email -------------->
-                <input class="form-control" type="email" placeholder="E-Mail" id="loginid" autocomplete="off" value="{{ old('email') }}" required autofocus/>
+                <input class="form-control" type="email" name="email" placeholder="E-Mail" id="loginid" autocomplete="off" value="{{ old('email') }}" required autofocus/>
                 <span style="display:none;font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
                 <!---Alredy exists  ! -->
                 @if ($errors->has('email'))
@@ -57,7 +57,7 @@
               </div>
               <div class="form-group has-feedback">
                 <!----- password -------------->
-                <input class="form-control" placeholder="Password" id="loginpsw" type="password" autocomplete="off" required/>
+                <input class="form-control" placeholder="Password" id="loginpsw" name="password" type="password" autocomplete="off" required/>
                 <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw"></span>
                 <!---Alredy exists  ! -->
                 @if ($errors->has('password'))
@@ -75,7 +75,7 @@
                   </div>
                 </div>
                 <div class="col-xs-12">
-                  <button type="button" class="btn btn-green btn-block btn-flat" onclick="userlogin()">Masuk</button>
+                  <button type="submit" class="btn btn-green btn-block btn-flat" onclick="userlogin()">Masuk</button>
                 </div>
               </div>
             </form>
