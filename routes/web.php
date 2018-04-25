@@ -24,6 +24,7 @@ Route::get('/home1', function () {
 });
 
 
+
 Route::get('/admin/jadwal', function () {
     return view('admin\jadwal\jadwal');
 });
