@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/user/evaluasi1', function () {
             return view('peserta.evaluasi');
         });
+        Route::post('/tambahrekening','PesertaController@rekening');
     });
     Route::group(['middleware'=>['instruktur']],function(){
         Route::get('/instruktur/jadwal', function () {

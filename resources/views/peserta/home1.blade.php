@@ -10,9 +10,10 @@
         <p class="cta-2-txt">Lakukan pembayaran sebesar Rp160.000 ke rekening 12345678 A.N KURSUS SITI BERSAUDARA</p>
         <p class="cta-3-txt">Pembayaran akan diverifikasi dalam waktu 1x24 jam</p>
         <div class="cta-2-form text-center">
-          <form action="#" method="post" id="workshop-newsletter-form">
+          <form action="{{url('/tambahrekening')}}" method="post" id="workshop-newsletter-form">
             <h4 class="text-center">Masukkan nomor rekening pembayaran anda</h2>
-            <input name="" placeholder="Nomor rekening" type="text">
+            <input name="no" placeholder="Nomor rekening" type="text">
+            {{csrf_field()}}
             <input class="cta-2-form-submit-btn" value="Kirim" type="submit">
           </form>
         </div>
