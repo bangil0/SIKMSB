@@ -15,69 +15,72 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user/evaluasi1', function () {
-    return view('peserta\evaluasi');
-});
 
-Route::get('/home1', function () {
-    return view('peserta.home1');
-});
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::group(['middleware'=>['admin']],function(){
+        Route::get('/admin/jadwal', function () {
+            return view('admin\jadwal\jadwal');
+        });
 
+        Route::get('/admin/peserta', function () {
+            return view('admin\peserta\peserta');
+        });
 
+        Route::get('/admin/peserta/edit', function () {
+            return view('admin\peserta\edit');
+        });
 
-Route::get('/admin/jadwal', function () {
-    return view('admin\jadwal\jadwal');
-});
+        Route::get('/admin/jadwal/edit', function () {
+            return view('admin\jadwal\edit');
+        });
 
-Route::get('/admin/peserta', function () {
-    return view('admin\peserta\peserta');
-});
+        Route::get('/admin/mobil', function () {
+            return view('admin\mobil\mobil');
+        });
 
-Route::get('/admin/peserta/edit', function () {
-    return view('admin\peserta\edit');
-});
+        Route::get('/admin/mobil/create', function () {
+            return view('admin\mobil\create');
+        });
 
-Route::get('/admin/jadwal/edit', function () {
-    return view('admin\jadwal\edit');
-});
+        Route::get('/admin/instruktur', function () {
+            return view('admin\instruktur\instruktur');
+        });
 
-Route::get('/admin/mobil', function () {
-    return view('admin\mobil\mobil');
-});
+        Route::get('/admin/instruktur/create', function () {
+            return view('admin\instruktur\create');
+        });
 
-Route::get('/admin/mobil/create', function () {
-    return view('admin\mobil\create');
-});
+        Route::get('/admin/pembayaran', function () {
+            return view('admin\pembayaran');
+        });
 
-Route::get('/admin/instruktur', function () {
-    return view('admin\instruktur\instruktur');
-});
+        Route::get('/admin/verifikasi', function () {
+            return view('admin\verifikasi');
+        });
+    });
+    Route::group(['middleware'=>['peserta']],function(){
+        Route::get('/home1', function () {
+            return view('peserta.home1');
+        });
+        Route::get('/jadwal', function () {
+            return view('peserta.jadwal');
+        });
+        Route::get('/user/evaluasi1', function () {
+            return view('peserta.evaluasi');
+        });
+    });
+    Route::group(['middleware'=>['instruktur']],function(){
+        Route::get('/instruktur/jadwal', function () {
+            return view('instruktur\jadwal');
+        });
 
-Route::get('/admin/instruktur/create', function () {
-    return view('admin\instruktur\create');
-});
-
-Route::get('/admin/pembayaran', function () {
-    return view('admin\pembayaran');
-});
-
-Route::get('/admin/verifikasi', function () {
-    return view('admin\verifikasi');
-});
-
-Route::get('/instruktur/jadwal', function () {
-    return view('instruktur\jadwal');
-});
-
-Route::get('/instruktur/evaluasi', function () {
-    return view('instruktur\evaluasi');
-});
-
-Route::get('/jadwal', function () {
-    return view('peserta\jadwal');
+        Route::get('/instruktur/evaluasi', function () {
+            return view('instruktur\evaluasi');
+        });
+    });
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout');

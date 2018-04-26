@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('peserta.home');
+        if(Auth::user()->role=='0')
+        {
+            if(Auth::user()->no_rek==null)
+            {
+                return redirect('/home1');
+            }
+            else
+            {
+                return view('peserta.home');
+            }
+        }
     }
 }

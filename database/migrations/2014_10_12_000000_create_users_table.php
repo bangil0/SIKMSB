@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->char('jenis_kelamin', 1);
             $table->date('tanggal_lahir');
             $table->string('alamat');
+            $table->integer('role')->default('0');
             $table->string('telepon', 20);
             $table->string('email')->unique();
             $table->string('password');
