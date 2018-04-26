@@ -6,8 +6,8 @@
   <div class="container">
     <div class="row">
       <div class="header-section text-center">
-        <h2>Evaluasi kursus anda</h2>
-        <p>Instruktur anda akan memberi evaluasi di setiap pertemuan</p>
+        <h2>Pilih jadwal kursus</h2>
+        <p>Kursus akan dilaksanakan 1 kali dalam seminggu selama 90 menit</p>
         <hr class="bottom-line">
       </div>
       <div class="col-md-3 col-sm-3">
@@ -15,7 +15,7 @@
           <!-- Plan  -->
           <div class="pricing-head">
             <h4>Senin</h4>
-            <h5>Waktu : 09:00</h5>
+            <h5>Waktu : 09:00-10:30</h5>
             <h5>instruktur : herman</h5>
           </div>
 
@@ -30,7 +30,7 @@
           <!-- Plan  -->
           <div class="pricing-head">
             <h4>Selasa</h4>
-            <h5>Waktu : 09:00</h5>
+            <h5>Waktu : 09:00-10:30</h5>
             <h5>instruktur : herman</h5>
           </div>
 
@@ -45,7 +45,7 @@
           <!-- Plan  -->
           <div class="pricing-head">
             <h4>Rabu</h4>
-            <h5>Waktu : 09:00</h5>
+            <h5>Waktu : 09:00-10:30</h5>
             <h5>instruktur : herman</h5>
           </div>
 
@@ -60,7 +60,7 @@
           <!-- Plan  -->
           <div class="pricing-head">
             <h4>Kamis</h4>
-            <h5>Waktu : 09:00</h5>
+            <h5>Waktu : 09:00-10:30</h5>
             <h5>instruktur : herman</h5>
           </div>
 
@@ -75,7 +75,7 @@
           <!-- Plan  -->
           <div class="pricing-head">
             <h4>Jumat</h4>
-            <h5>Waktu : 09:00</h5>
+            <h5>Waktu : 09:00-10:30</h5>
             <h5>instruktur : herman</h5>
           </div>
 
@@ -90,7 +90,7 @@
           <!-- Plan  -->
           <div class="pricing-head">
             <h4>Sabtu</h4>
-            <h5>Waktu : 09:00</h5>
+            <h5>Waktu : 09:00-10:30</h5>
             <h5>instruktur : herman</h5>
           </div>
 
@@ -105,7 +105,7 @@
           <!-- Plan  -->
           <div class="pricing-head">
             <h4>Minggu</h4>
-            <h5>Waktu : 09:00</h5>
+            <h5>Waktu : 09:00-10:30</h5>
             <h5>instruktur : herman</h5>
           </div>
 

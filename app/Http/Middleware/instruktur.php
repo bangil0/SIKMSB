@@ -13,13 +13,13 @@ class instruktur
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()) 
+        //if (Auth::user())
         {
-            if( Auth::user()->role == '2')
+            //if( Auth::user()->role == '2')
             {
                 return $next($request);
             }
-            
+
         }
         return redirect('/');
     }

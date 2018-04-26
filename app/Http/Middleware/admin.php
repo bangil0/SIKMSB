@@ -13,13 +13,13 @@ class admin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()) 
+        //if (Auth::user())
         {
-            if( Auth::user()->role == '1')
+            //if( Auth::user()->role == '1')
             {
                 return $next($request);
             }
-            
+
         }
         return redirect('/');
     }
