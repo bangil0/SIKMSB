@@ -6,14 +6,14 @@
     <div class="row">
       <div class="header-section text-center">
         <h2>Daftar Kursus</h2>
-        <p>Anda akan mendaftar kursus untuk 16 kali pertemuan</p>
+        <p>Anda akan mendaftar kursus untuk 8, 12, atau 16 kali pertemuan</p>
         <hr class="bottom-line">
       </div>
 
       <!-- <div id="sendmessage">Your message has been sent. Thank you!</div>
       <div id="errormessage"></div> -->
 
-      <form action="" method="post" class="contactForm" action="{{ route('register') }}">
+      <form method="POST" action="{{ route('register') }}">
         {{ csrf_field() }}
         <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-1">
@@ -21,15 +21,26 @@
         </div>
 
         <div class="col-md-6 col-sm-6 col-xs-10">
-          <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+          <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
             <label>Nama :</label>
-            <input type="text" name="name" class="form-control form" id="name" placeholder="Nama anda"/>
-            @if ($errors->has('name'))
+            <input type="text" name="nama" class="form-control form" id="nama" placeholder="Nama anda" value="{{ old('nama') }}"/>
+            @if ($errors->has('nama'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('name') }}</strong>
+                    <strong>{{ $errors->first('nama') }}</strong>
                 </span>
             @endif
 
+          </div>
+          <div class="form-group{{ $errors->has('jumlah_pertemuan') ? ' has-error' : '' }}">
+            <label>Jumlah Pertemuan :</label><br>
+              <label class="radio-inline"><input type="radio" name="jumlah_pertemuan" value="8">8 kali</label>
+              <label class="radio-inline"><input type="radio" name="jumlah_pertemuan" value="12">12 kali</label>
+              <label class="radio-inline"><input type="radio" name="jumlah_pertemuan" value="16">16 kali</label>
+              @if ($errors->has('jumlah_pertemuan'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('jumlah_pertemuan') }}</strong>
+                  </span>
+              @endif
           </div>
           <div class="form-group{{ $errors->has('jenis_kelamin') ? ' has-error' : '' }}">
             <label>Jenis Kelamin :</label><br>
@@ -43,7 +54,7 @@
           </div>
           <div class="form-group{{ $errors->has('tanggal_lahir') ? ' has-error' : '' }}">
             <label>Tanggal lahir :</label>
-            <input type="date" name="tanggal_lahir" class="form-control form" id="tanggal lahir" placeholder="Tanggal lahir anda"/>
+            <input type="date" name="tanggal_lahir" class="form-control form" id="tanggal lahir" placeholder="Tanggal lahir anda" value="{{ old('tanggal_lahir') }}"/>
             @if ($errors->has('tanggal_lahir'))
                 <span class="help-block">
                     <strong>{{ $errors->first('tanggal_lahir') }}</strong>
@@ -52,25 +63,25 @@
           </div>
           <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
             <label>Alamat :</label>
-            <input type="text" name="alamat" class="form-control form" id="alamat" placeholder="Alamat penjemputan anda" />
+            <input type="text" name="alamat" class="form-control form" id="alamat" placeholder="Alamat penjemputan anda" value="{{ old('alamat') }}"/>
             @if ($errors->has('alamat'))
                 <span class="help-block">
                     <strong>{{ $errors->first('alamat') }}</strong>
                 </span>
             @endif
           </div>
-          <div class="form-group{{ $errors->has('telepon') ? ' has-error' : '' }}">
+          <div class="form-group{{ $errors->has('nomor_telepon') ? ' has-error' : '' }}">
             <label>Nomor telepon :</label>
-            <input type="tel" name="telepon" class="form-control form" id="telepon" placeholder="Nomor telepon anda"  />
-            @if ($errors->has('telepon'))
+            <input type="tel" name="nomor_telepon" class="form-control form" id="nomor_telepon" placeholder="Nomor telepon anda" value="{{ old('nomor_telepon') }}"/>
+            @if ($errors->has('nomor_telepon'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('telepon') }}</strong>
+                    <strong>{{ $errors->first('nomor_telepon') }}</strong>
                 </span>
             @endif
           </div>
           <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <label>Alamat E-Mail :</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="Email anda" />
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email anda" value="{{ old('email') }}"/>
             @if ($errors->has('email'))
                 <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>
@@ -108,7 +119,7 @@
         </div>
         <div class="col-md-6 col-sm-6 col-xs-10">
           <!-- Button -->
-          <button type="submit" class="form contact-form-button light-form-button oswald light">Daftar</button>
+          <button type="submit" class="btn btn-block btn-green">Daftar</button>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-1">
 

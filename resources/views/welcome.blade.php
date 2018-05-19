@@ -432,3 +432,13 @@
 </section>
 <!--/ Contact-->
 @endsection
+
+@section('additional-script')
+<script>
+  $(document).ready(function() {
+  if(window.location.href.indexOf('#login') != -1) {
+    $('#login').modal('show');
+  }
+});
+</script>
+@endsection

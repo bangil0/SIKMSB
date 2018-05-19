@@ -29,7 +29,8 @@
   <script src="{{ URL::asset('js/jquery.easing.min.js') }}"></script>
   <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ URL::asset('js/custom.js') }}"></script>
-  <script src="{{ URL::asset('contactform/contactform.js') }}"></script>
+  @yield('additional-script')
+
 
 </body>
 

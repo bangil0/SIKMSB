@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
+use App\Peserta;
 class HomeController extends Controller
 {
     /**
@@ -23,16 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role=='0')
-        {
-            if(Auth::user()->no_rek==null)
-            {
-                return redirect('/home1');
-            }
-            else
-            {
-                return view('peserta.home');
-            }
-        }
+        $namapeserta = Peserta::where('id', Auth::id())->value('nama');
+
+        return view('peserta.home',  [
+            'namapeserta'       => $namapeserta,]);
     }
 }

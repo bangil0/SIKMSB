@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePembayaranTable extends Migration
+class CreateInstrukturMemilihTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreatePembayaranTable extends Migration
      */
     public function up()
     {
-      Schema::create('jadwal', function (Blueprint $table) {
-          $table->increments('id_pembayaran');
-          $table->integer('id_pelanggan');
-          $table->timestamp('tanggal_waktu_bayar');
-          $table->string('nomor_rekening');
-          $table->char('verifikasi', 1);
-
+      Schema::create('instruktur_memilih', function (Blueprint $table) {
+          $table->integer('id_instruktur')->unsigned();
+          $table->integer('id_jadwal')->unsigned();
       });
     }
 

@@ -21,7 +21,16 @@ class CreateMobilTable extends Migration
           $table->char('tahun', 4);
 
       });
+
+      Schema::table('kursus', function (Blueprint $table) {
+          $table->foreign('id_mobil')
+                ->references('id_mobil')
+                ->on('mobil')
+                ->onUpdate('cascade');
+      });
     }
+
+
 
     /**
      * Reverse the migrations.

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Peserta;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -48,11 +49,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
+            'jumlah_pertemuan' => 'required|in:8,12,16',
             'jenis_kelamin' => 'required|in:L,P',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|min:10',
-            'telepon' => 'required|string|min:6|max:15',
+            'nomor_telepon' => 'required|string|min:6|max:15',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -66,14 +68,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'jenis_kelamin' => $data['jenis_kelamin'],
-            'tanggal_lahir' => $data['tanggal_lahir'],
-            'alamat' => $data['alamat'],
-            'telepon' => $data['telepon'],
+        $session = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        $user = User::where('email', $data['email'])->value('id');
+        Peserta::create([
+          'id' => $user,
+          'nama' => $data['nama'],
+          'jenis_kelamin' => $data['jenis_kelamin'],
+          'tanggal_lahir' => $data['tanggal_lahir'],
+          'alamat' => $data['alamat'],
+          'nomor_telepon' => $data['nomor_telepon'],
+          'verifikasi' => '0',
+          'sisa_kursus' => $data['jumlah_pertemuan'],
+        ]);
+        return $session;
     }
 }

@@ -14,16 +14,27 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
+    protected $primarykey = 'id';
     protected $fillable = [
-        'name','jenis_kelamin','tanggal_lahir','alamat','telepon', 'email', 'password',
+        'email', 'password'
     ];
 
+    public function peserta()
+    {
+      return $this->belongsTo('App\Peserta');
+    }
+
+    public function instruktur()
+    {
+      return $this->belongsTo('App\Instruktur');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password'
     ];
 }

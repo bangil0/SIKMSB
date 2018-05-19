@@ -20,6 +20,20 @@ class CreateJadwalTable extends Migration
           $table->time('jam_selesai');
 
       });
+
+      Schema::table('peserta', function (Blueprint $table) {
+          $table->foreign('id_jadwal')
+                ->references('id_jadwal')
+                ->on('jadwal')
+                ->onUpdate('cascade');
+      });
+
+      Schema::table('instruktur_memilih', function (Blueprint $table) {
+          $table->foreign('id_jadwal')
+                ->references('id_jadwal')
+                ->on('jadwal')
+                ->onUpdate('cascade');
+      });
     }
 
     /**

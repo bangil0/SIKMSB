@@ -16,7 +16,7 @@
         <li><a href="#courses">Courses</a></li>
         <li><a href="#pricing">Pricing</a></li> -->
         @if(Auth::check())
-        <li><a>Halo, {{ Auth::user()->name }}</a></li>
+        <li><a>Halo, {{ $namapeserta }}</a></li>
         <li class="btn-trial"><a href="/logout">Logout</a></li>
         @else
         <li><a href="#" data-target="#login" data-toggle="modal">Masuk</a></li>
@@ -42,11 +42,11 @@
         <div class="login-box-body">
           <p class="login-box-msg">Masuk untuk peserta kursus</p>
           <div class="form-group">
-            <form name="" id="loginForm" method="POST" action="{{ route('login') }}">
+            <form name="" id="loginForm" method="POST" action="/login">
               <div class="form-group has-feedback">
                 {{ csrf_field() }}
                 <!----- email -------------->
-                <input class="form-control" type="email" name="email" placeholder="E-Mail" id="loginid" autocomplete="off" value="{{ old('email') }}" required autofocus/>
+                <input class="form-control" type="email" name="email" placeholder="E-mail" id="loginid" autocomplete="off" value="{{ old('email') }}" required autofocus/>
                 <span style="display:none;font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
                 <!---Alredy exists  ! -->
                 @if ($errors->has('email'))
@@ -75,7 +75,7 @@
                   </div>
                 </div>
                 <div class="col-xs-12">
-                  <button type="submit" class="btn btn-green btn-block btn-flat" onclick="userlogin()">Masuk</button>
+                  <button type="submit" class="btn btn-green btn-block btn-flat">Masuk</button>
                 </div>
               </div>
             </form>

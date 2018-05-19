@@ -15,12 +15,12 @@ class CreateKursusTable extends Migration
     {
       Schema::create('kursus', function (Blueprint $table) {
           $table->increments('id_kursus');
-          $table->integer('id_instruktur');
-          $table->integer('id_pelanggan');
-          $table->integer('id_mobil');
-          $table->integer('kursus_ke');
-          $table->text('evaluasi');
-          $table->char('sudah_isi', 1);
+          $table->integer('id_instruktur')->unsigned();
+          $table->integer('id_peserta')->unsigned();
+          $table->integer('id_mobil')->unsigned();
+          $table->integer('kursus_ke')->unsigned();
+          $table->text('evaluasi')->nullable();
+          $table->char('sudah_isi', 1)->default("0");
 
       });
     }

@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+Route::get('/login', function () {
+    return redirect('/#login');
+});
+
+Route::get('/logout', 'Auth\LoginController@logout');
 
 //Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -67,9 +73,9 @@ Route::get('/', function () {
         Route::get('/home1', function () {
             return view('peserta.home1');
         });
-        Route::get('/home', function () {
-            return view('peserta.home');
-        });
+        // Route::get('/home', function () {
+        //     return view('peserta.home');
+        // });
         Route::get('/jadwal', function () {
             return view('peserta.jadwal');
         });
@@ -94,7 +100,3 @@ Route::get('/', function () {
         });
     //});
 //});
-
-Auth::routes();
-
-Route::get('/logout', 'Auth\LoginController@logout');
