@@ -16,9 +16,10 @@ class CreatePembayaranTable extends Migration
       Schema::create('pembayaran', function (Blueprint $table) {
           $table->increments('id_pembayaran');
           $table->integer('id_peserta')->unsigned();
-          $table->timestamp('tanggal_waktu_bayar');
-          $table->string('nomor_rekening');
-          $table->char('verifikasi', 1);
+          $table->integer('jumlah_kursus')->unsigned();
+          $table->timestamps();
+          $table->string('nomor_rekening')->nullable();
+          $table->char('verifikasi', 1)->nullable();
 
       });
     }

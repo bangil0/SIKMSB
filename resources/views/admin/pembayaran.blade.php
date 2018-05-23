@@ -16,46 +16,33 @@
               <tr>
                 <th>Nama Peserta</th>
                 <th>No rekening</th>
-                <th>gambar</th>
                 <th>Waktu pembayaran</th>
                 <th>Verifikasi pembayaran</th>
                 <th>Tombol verifikasi</th>
               </tr>
             </thead>
             <tbody>
+              @foreach($pembayaran as $p)
               <tr>
-                <td>Peserta 1</td>
-                <td>12345678</td>
-                <td>bayar.jpg</td>
-                <td>12/12/17 09:00</td>
-                <td>Belum terverifikasi</td>
-                <td><a class="btn btn-primary btn-block" href="login.html">Verifikasi</a></td>
+                <td>{{$p->peserta->nama}}</td>
+                <td>{{$p->nomor_rekening}}</td>
+                <td>{{$p->updated_at}}</td>
+                @if($p->verifikasi == '0')
+                  <td>Belum terverifikasi</td>
+                  <td>
+                    <form action="{{ url('/admin/pembayaran', [$p->id_pembayaran]) }}" method="post" id="workshop-newsletter-form">
+                      {{ csrf_field() }}
+                    <input name="_method" type="hidden" value="PUT">
+                    <input type="hidden" name="verifikasi" value="1">
+                    <input class="btn btn-primary btn-block" value="Verifikasi" type="submit">
+                  </form>
+                </td>
+                @elseif($p->verifikasi == '1')
+                  <td>Terverifikasi</td>
+                  <td></td>
+                @endif
               </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>12345678</td>
-                <td>bayar.jpg</td>
-                <td>12/12/17 09:00</td>
-                <td>Belum terverifikasi</td>
-                <td><a class="btn btn-primary btn-block" href="login.html">Verifikasi</a></td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>12345678</td>
-                <td>bayar.jpg</td>
-                <td>12/12/17 09:00</td>
-                <td>Belum terverifikasi</td>
-                <td><a class="btn btn-primary btn-block" href="login.html">Verifikasi</a></td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>12345678</td>
-                <td>bayar.jpg</td>
-                <td>12/12/17 09:00</td>
-                <td>Belum terverifikasi</td>
-                <td><a class="btn btn-primary btn-block" href="login.html">Verifikasi</a></td>
-              </tr>
-
+              @endforeach
             </tbody>
           </table>
         </div>

@@ -14,33 +14,19 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>Nama Peserta</th>
                 <th>Hari kursus</th>
-                <th>Waktu kursus</th>
+                <th>Waktu mulai</th>
+                <th>Waktu selesai</th>
               </tr>
             </thead>
             <tbody>
+              @foreach($jadwal as $j)
               <tr>
-                <td>Peserta 1</td>
-                <td>Kamis</td>
-                <td>09:00</td>
+                <td>{{$j->hari}}</td>
+                <td>{{$j->jam_mulai}}</td>
+                <td>{{$j->jam_selesai}}</td>
               </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>Kamis</td>
-                <td>09:00</td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>Kamis</td>
-                <td>09:00</td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>Kamis</td>
-                <td>09:00</td>
-              </tr>
-
+              @endforeach
             </tbody>
           </table>
         </div>

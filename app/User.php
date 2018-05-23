@@ -17,7 +17,7 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $primarykey = 'id';
     protected $fillable = [
-        'email', 'password'
+        'email', 'nama', 'password'
     ];
 
     public function peserta()

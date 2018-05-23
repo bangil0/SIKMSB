@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
 class Peserta extends Model
 {
@@ -13,12 +14,12 @@ class Peserta extends Model
 
     public function jadwal()
     {
-      return $this->belongsTo('App\Jadwal');
+      return $this->belongsTo('App\Jadwal', 'id_jadwal');
     }
 
     public function pembayaran()
     {
-      return $this->hasMany('App\Pembayaran');
+      return $this->hasMany('App\Pembayaran', 'id_peserta');
     }
 
     public function kursus()

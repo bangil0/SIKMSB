@@ -23,39 +23,29 @@
               </tr>
             </thead>
             <tbody>
+              @foreach($peserta as $p)
               <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>12/12/98</td>
-                <td>08110101010</td>
-                <td>terverifikasi</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>12/12/98</td>
-                <td>08110101010</td>
-                <td>terverifikasi</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>12/12/98</td>
-                <td>08110101010</td>
-                <td>belum terverifikasi</td>
-                <td><a class="btn btn-primary btn-block" href="login.html">Verifikasi</a></td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>12/12/98</td>
-                <td>08110101010</td>
-                <td>belum terverifikasi</td>
-                <td><a class="btn btn-primary btn-block" href="login.html">Verifikasi</a></td>
-              </tr>
+                <td>{{ $p->nama }}</td>
+                <td>{{ $p->alamat }}</td>
+                <td>{{ $p->tanggal_lahir }}</td>
+                <td>{{ $p->nomor_telepon }}</td>
+                @if($p->verifikasi == '0')
+                  <td>Belum terverifikasi</td>
+                  <td>
+                    <form action="{{ url('/admin/verifikasi', [$p->id_peserta]) }}" method="post" id="workshop-newsletter-form">
+                    {{ csrf_field() }}
+                    <input name="_method" type="hidden" value="PUT">
+                    <input type="hidden" name="verifikasi" value="1">
+                    <input class="btn btn-primary btn-block" value="Verifikasi" type="submit">
+                    </form>
+                  </td>
+                @elseif($p->verifikasi == '1')
+                  <td>Terverifikasi</td>
+                  <td></td>
+                @endif
 
+              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

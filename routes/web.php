@@ -20,6 +20,9 @@ Route::get('/login', function () {
     return redirect('/#login');
 });
 
+Route::resource('/admin/verifikasi', 'VerifikasiController');
+Route::resource('/admin/pembayaran', 'PembayaranController');
+Route::resource('/admin/jadwal', 'JadwalController');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 //Route::group(['middleware' => ['auth']], function() {
@@ -29,20 +32,12 @@ Route::get('/logout', 'Auth\LoginController@logout');
           return view('admin\login');
         });
 
-        Route::get('/admin/jadwal', function () {
-            return view('admin\jadwal\jadwal');
-        });
-
         Route::get('/admin/peserta', function () {
             return view('admin\peserta\peserta');
         });
 
         Route::get('/admin/peserta/edit', function () {
             return view('admin\peserta\edit');
-        });
-
-        Route::get('/admin/jadwal/edit', function () {
-            return view('admin\jadwal\edit');
         });
 
         Route::get('/admin/mobil', function () {
@@ -60,24 +55,19 @@ Route::get('/logout', 'Auth\LoginController@logout');
         Route::get('/admin/instruktur/create', function () {
             return view('admin\instruktur\create');
         });
-
-        Route::get('/admin/pembayaran', function () {
-            return view('admin\pembayaran');
-        });
-
-        Route::get('/admin/verifikasi', function () {
-            return view('admin\verifikasi');
-        });
     //});
     //Route::group(['middleware'=>['peserta']],function(){
-        Route::get('/home1', function () {
-            return view('peserta.home1');
-        });
+        Route::get('/masukkan-rekening/{id}', 'MasukkanRekeningController@show');
+
+        Route::post('/masukkan-rekening/{id}', 'MasukkanRekeningController@update');
         // Route::get('/home', function () {
         //     return view('peserta.home');
         // });
         Route::get('/jadwal', function () {
             return view('peserta.jadwal');
+        });
+        Route::get('/menunggu-bayar', function () {
+            return view('peserta.menunggu-bayar');
         });
         Route::get('/menunggu-verifikasi', function () {
             return view('peserta.menunggu-verifikasi');
@@ -85,7 +75,6 @@ Route::get('/logout', 'Auth\LoginController@logout');
         Route::get('/user/evaluasi1', function () {
             return view('peserta.evaluasi');
         });
-        Route::post('/tambahrekening','PesertaController@rekening');
     //});
     //Route::group(['middleware'=>['instruktur']],function(){
         Route::get('/instruktur', function () {

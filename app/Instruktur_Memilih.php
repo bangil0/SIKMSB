@@ -11,7 +11,7 @@ class Instruktur_Memilih extends Model
     protected $fillable = ['id_instruktur', 'id_jadwal'];
     public function jadwal()
     {
-      return $this->belongsTo('App\Jadwal');
+      return $this->belongsTo('App\Jadwal', 'id_jadwal');
     }
 
     public function instruktur()

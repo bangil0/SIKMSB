@@ -16,7 +16,7 @@
         <li><a href="#courses">Courses</a></li>
         <li><a href="#pricing">Pricing</a></li> -->
         @if(Auth::check())
-        <li><a>Halo, {{ $namapeserta }}</a></li>
+        <li><a>Halo, {{ Auth::user()->nama }}</a></li>
         <li class="btn-trial"><a href="/logout">Logout</a></li>
         @else
         <li><a href="#" data-target="#login" data-toggle="modal">Masuk</a></li>

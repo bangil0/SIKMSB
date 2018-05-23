@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Peserta;
+use App\Pembayaran;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/menunggu-verifikasi';
 
     /**
      * Create a new controller instance.
@@ -70,6 +71,7 @@ class RegisterController extends Controller
     {
         $session = User::create([
             'email' => $data['email'],
+            'nama' => $data['nama'],
             'password' => bcrypt($data['password']),
         ]);
         $user = User::where('email', $data['email'])->value('id');
@@ -81,7 +83,13 @@ class RegisterController extends Controller
           'alamat' => $data['alamat'],
           'nomor_telepon' => $data['nomor_telepon'],
           'verifikasi' => '0',
-          'sisa_kursus' => $data['jumlah_pertemuan'],
+          'sisa_kursus' => '0',
+        ]);
+
+        Pembayaran::create([
+          'id_peserta' => $user,
+          'jumlah_kursus' => $data['jumlah_pertemuan'],
+          'verifikasi' => '0',
         ]);
         return $session;
     }

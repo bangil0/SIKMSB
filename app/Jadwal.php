@@ -12,11 +12,11 @@ class Jadwal extends Model
 
     public function peserta()
     {
-      return $this->hasMany('App\Peserta');
+      return $this->hasMany('App\Peserta', 'id_jadwal');
     }
 
     public function instruktur_memilih()
     {
-      return $this->hasMany('App\Instruktur_Memilih');
+      return $this->hasMany('App\Instruktur_Memilih', 'id_jadwal');
     }
 }
