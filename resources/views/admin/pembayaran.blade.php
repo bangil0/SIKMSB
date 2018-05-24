@@ -8,38 +8,43 @@
     <!-- Example DataTables Card-->
     <div class="card mb-3">
       <div class="card-header">
-        <i class="fa fa-table"></i>Jadwal</div>
+        <h3>Pembayaran</h3></div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
                 <th>Nama Peserta</th>
+                <th>Nominal</th>
                 <th>No rekening</th>
                 <th>Waktu pembayaran</th>
-                <th>Verifikasi pembayaran</th>
-                <th>Tombol verifikasi</th>
+                <th>Status pembayaran</th>
               </tr>
             </thead>
             <tbody>
               @foreach($pembayaran as $p)
               <tr>
-                <td>{{$p->peserta->nama}}</td>
-                <td>{{$p->nomor_rekening}}</td>
-                <td>{{$p->updated_at}}</td>
+                <td class="align-middle">{{$p->peserta->nama}}</td>
+                @if($p->jumlah_kursus == 8)
+                <td class="align-middle">Rp160.000</td>
+                @elseif($p->jumlah_kursus == 8)
+                <td class="align-middle">Rp200.000</td>
+                @elseif($p->jumlah_kursus == 8)
+                <td class="align-middle">Rp240.000</td>
+                @endif
+                <td class="align-middle">{{$p->nomor_rekening}}</td>
+                <td class="align-middle">{{$p->updated_at}}</td>
                 @if($p->verifikasi == '0')
-                  <td>Belum terverifikasi</td>
                   <td>
                     <form action="{{ url('/admin/pembayaran', [$p->id_pembayaran]) }}" method="post" id="workshop-newsletter-form">
                       {{ csrf_field() }}
                     <input name="_method" type="hidden" value="PUT">
                     <input type="hidden" name="verifikasi" value="1">
-                    <input class="btn btn-primary btn-block" value="Verifikasi" type="submit">
+                    <input class="btn btn-primary btn-block" value="Terima pembayaran" type="submit">
                   </form>
                 </td>
                 @elseif($p->verifikasi == '1')
-                  <td>Terverifikasi</td>
-                  <td></td>
+                  <td><button class="btn btn-primary btn-block disabled">Sudah diterima</button></td>
                 @endif
               </tr>
               @endforeach

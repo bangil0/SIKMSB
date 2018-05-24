@@ -9,7 +9,7 @@ class Peserta extends Model
 {
     public $timestamps = false;
     protected $table = 'peserta';
-    protected $primarykey = 'id_peserta';
+    protected $primaryKey = 'id_peserta';
     protected $fillable = ['id_instruktur', 'id', 'id_jadwal', 'nama', 'jenis_kelamin', 'tanggal_lahir', 'alamat', 'nomor_telepon', 'verifikasi', 'sisa_kursus'];
 
     public function jadwal()

@@ -8,7 +8,13 @@
     <!-- Example DataTables Card-->
     <div class="card mb-3">
       <div class="card-header">
-        <i class="fa fa-table"></i>Mobil</div>
+        <div class="col-md-3 pull-left">
+          <h3>Mobil</h3>
+        </div>
+        <div class="col-md-3 pull-right">
+          <a class="btn btn-primary btn-md float-right" href="/admin/mobil/create">Data baru</a>
+        </div>
+      </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -18,34 +24,19 @@
                 <th>Nomor polisi</th>
                 <th>Warna</th>
                 <th>Tahun</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
+              @foreach($mobil as $m)
               <tr>
-                <td>ABC</td>
-                <td>L 111 LL</td>
-                <td>Hitam</td>
-                <td>2018</td>
+                <td class="align-middle">{{$m->jenis_merk}}</td>
+                <td class="align-middle">{{$m->nomor_polisi}}</td>
+                <td class="align-middle">{{$m->warna}}</td>
+                <td class="align-middle">{{$m->tahun}}</td>
+                <td><a class="btn btn-primary btn-block" href="{{ url('/admin/mobil/'.$m->id_mobil.'/edit') }}">Edit</a></td>
               </tr>
-              <tr>
-                <td>ABC</td>
-                <td>L 111 LL</td>
-                <td>Hitam</td>
-                <td>2018</td>
-              </tr>
-              <tr>
-                <td>ABC</td>
-                <td>L 111 LL</td>
-                <td>Hitam</td>
-                <td>2018</td>
-              </tr>
-              <tr>
-                <td>ABC</td>
-                <td>L 111 LL</td>
-                <td>Hitam</td>
-                <td>2018</td>
-              </tr>
-
+              @endforeach
             </tbody>
           </table>
         </div>

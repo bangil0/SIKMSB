@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jadwal;
+use App\Peserta;
+use App\User;
 
-class JadwalController extends Controller
+class PesertaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::paginate(10);
-        return view('admin.jadwal.jadwal', ['jadwal' => $jadwal]);
+        $peserta = Peserta::paginate(10);
+        return view('admin.peserta.peserta', ['peserta' => $peserta]);
     }
 
     /**
@@ -25,7 +26,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('admin.jadwal.create');
+        //
     }
 
     /**
@@ -36,8 +37,7 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        $jadwal = Jadwal::create($request->all());
-        return redirect('/admin/jadwal');
+        //
     }
 
     /**
@@ -59,8 +59,9 @@ class JadwalController extends Controller
      */
     public function edit($id)
     {
-        $jadwal = Jadwal::findorfail($id);
-        return view("admin.jadwal.edit", ['jadwal' => $jadwal]);
+        $peserta = Peserta::findorfail($id);
+        $user = User::findorfail($peserta->id);
+        return view("admin.peserta.edit", ['peserta' => $peserta, 'user' => $user]);
     }
 
     /**
@@ -72,9 +73,27 @@ class JadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $jadwal = Jadwal::findorfail($id);
-      $jadwal->update($request->all());
-      return redirect('/admin/jadwal');
+      $peserta = Peserta::findorfail($id);
+      $user = User::findorfail($peserta->id);
+      $peserta->update([
+        'nama' => $request['nama'],
+        'jenis_kelamin' => $request['jenis_kelamin'],
+        'no_ktp' => $request['no_ktp'],
+        'no_sim' => $request['no_sim'],
+        'nomor_telepon' => $request['nomor_telepon'],
+        'alamat' => $request['alamat'],
+      ]);
+
+      $user->update([
+        'email' => $request['email'],
+      ]);
+
+      if($request['password'] != ""){
+        $user->update([
+          'password' => bcrypt($request['email']),
+        ]);
+      }
+      return redirect('/admin/peserta');
     }
 
     /**

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jadwal;
+use App\Mobil;
 
-class JadwalController extends Controller
+class MobilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::paginate(10);
-        return view('admin.jadwal.jadwal', ['jadwal' => $jadwal]);
+      $mobil = Mobil::paginate(10);
+      return view('admin.mobil.mobil', ['mobil' => $mobil]);
     }
 
     /**
@@ -25,7 +25,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('admin.jadwal.create');
+        return view('admin.mobil.create');
     }
 
     /**
@@ -36,8 +36,8 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        $jadwal = Jadwal::create($request->all());
-        return redirect('/admin/jadwal');
+      $mobil = Mobil::create($request->all());
+      return redirect('/admin/mobil');
     }
 
     /**
@@ -59,8 +59,8 @@ class JadwalController extends Controller
      */
     public function edit($id)
     {
-        $jadwal = Jadwal::findorfail($id);
-        return view("admin.jadwal.edit", ['jadwal' => $jadwal]);
+      $mobil = Mobil::findorfail($id);
+      return view("admin.mobil.edit", ['mobil' => $mobil]);
     }
 
     /**
@@ -72,9 +72,9 @@ class JadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $jadwal = Jadwal::findorfail($id);
-      $jadwal->update($request->all());
-      return redirect('/admin/jadwal');
+      $mobil = Mobil::findorfail($id);
+      $mobil->update($request->all());
+      return redirect('/admin/mobil');
     }
 
     /**

@@ -8,7 +8,7 @@
     <!-- Example DataTables Card-->
     <div class="card mb-3">
       <div class="card-header">
-        <i class="fa fa-table"></i>Jadwal</div>
+        <h3 class="align-middle">Verifikasi</h3></div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -18,19 +18,17 @@
                 <th>Alamat</th>
                 <th>Tanggal lahir</th>
                 <th>No telepon</th>
-                <th>Status terverifikasi</th>
-                <th>tombol verifikasi</th>
+                <th>Verifikasi</th>
               </tr>
             </thead>
             <tbody>
               @foreach($peserta as $p)
               <tr>
-                <td>{{ $p->nama }}</td>
-                <td>{{ $p->alamat }}</td>
-                <td>{{ $p->tanggal_lahir }}</td>
-                <td>{{ $p->nomor_telepon }}</td>
+                <td class="align-middle">{{ $p->nama }}</td>
+                <td class="align-middle">{{ $p->alamat }}</td>
+                <td class="align-middle">{{ $p->tanggal_lahir }}</td>
+                <td class="align-middle">{{ $p->nomor_telepon }}</td>
                 @if($p->verifikasi == '0')
-                  <td>Belum terverifikasi</td>
                   <td>
                     <form action="{{ url('/admin/verifikasi', [$p->id_peserta]) }}" method="post" id="workshop-newsletter-form">
                     {{ csrf_field() }}
@@ -40,8 +38,7 @@
                     </form>
                   </td>
                 @elseif($p->verifikasi == '1')
-                  <td>Terverifikasi</td>
-                  <td></td>
+                  <td><button class="btn btn-primary btn-block disabled">Terverifikasi</button></td>
                 @endif
 
               </tr>

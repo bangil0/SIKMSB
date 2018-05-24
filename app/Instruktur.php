@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Instruktur extends Model
 {
+    public $timestamps = false;
     protected $table = 'instruktur';
-    protected $primarykey = 'id_instruktur';
+    protected $primaryKey = 'id_instruktur';
     protected $fillable = ['id', 'nama', 'jenis_kelamin', 'no_ktp', 'no_sim', 'nomor_telepon', 'alamat'];
 
     public function instruktur_memilih()

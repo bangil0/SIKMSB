@@ -23,6 +23,9 @@ Route::get('/login', function () {
 Route::resource('/admin/verifikasi', 'VerifikasiController');
 Route::resource('/admin/pembayaran', 'PembayaranController');
 Route::resource('/admin/jadwal', 'JadwalController');
+Route::resource('/admin/mobil', 'MobilController');
+Route::resource('/admin/instruktur', 'InstrukturController');
+Route::resource('/admin/peserta', 'PesertaController');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 //Route::group(['middleware' => ['auth']], function() {
@@ -30,30 +33,6 @@ Route::get('/logout', 'Auth\LoginController@logout');
     //Route::group(['middleware'=>['admin']],function(){
         Route::get('/admin', function () {
           return view('admin\login');
-        });
-
-        Route::get('/admin/peserta', function () {
-            return view('admin\peserta\peserta');
-        });
-
-        Route::get('/admin/peserta/edit', function () {
-            return view('admin\peserta\edit');
-        });
-
-        Route::get('/admin/mobil', function () {
-            return view('admin\mobil\mobil');
-        });
-
-        Route::get('/admin/mobil/create', function () {
-            return view('admin\mobil\create');
-        });
-
-        Route::get('/admin/instruktur', function () {
-            return view('admin\instruktur\instruktur');
-        });
-
-        Route::get('/admin/instruktur/create', function () {
-            return view('admin\instruktur\create');
         });
     //});
     //Route::group(['middleware'=>['peserta']],function(){

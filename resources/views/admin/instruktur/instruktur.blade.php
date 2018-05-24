@@ -9,10 +9,10 @@
     <div class="card mb-3">
       <div class="card-header">
         <div class="col-md-3 pull-left">
-          <i class="fa fa-table"></i> Instruktur
+          <h3>Instruktur</h3>
         </div>
         <div class="col-md-3 pull-right">
-          <a class="btn btn-primary btn-sm float-right" href="/admin/instruktur/create">Data baru</a>
+          <a class="btn btn-primary float-right" href="/admin/instruktur/create">Data baru</a>
         </div>
       </div>
 
@@ -27,42 +27,21 @@
                 <th>No KTP</th>
                 <th>Alamat</th>
                 <th>Telepon</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
+              @foreach($instruktur as $i)
               <tr>
-                <td>Herman</td>
-                <td>L</td>
-                <td>1234567812345678</td>
-                <td>8765432187654321</td>
-                <td>Keputih</td>
-                <td>0808080808080</td>
+                <td class="align-middle">{{$i->nama}}</td>
+                <td class="align-middle">{{$i->jenis_kelamin}}</td>
+                <td class="align-middle">{{$i->no_sim}}</td>
+                <td class="align-middle">{{$i->no_ktp}}</td>
+                <td class="align-middle">{{$i->alamat}}</td>
+                <td class="align-middle">{{$i->nomor_telepon}}</td>
+                <td><a class="btn btn-primary btn-block" href="{{ url('/admin/instruktur/'.$i->id_instruktur.'/edit') }}">Edit</a></td>
               </tr>
-              <tr>
-                <td>Herman</td>
-                <td>L</td>
-                <td>1234567812345678</td>
-                <td>8765432187654321</td>
-                <td>Keputih</td>
-                <td>0808080808080</td>
-              </tr>
-              <tr>
-                <td>Herman</td>
-                <td>L</td>
-                <td>1234567812345678</td>
-                <td>8765432187654321</td>
-                <td>Keputih</td>
-                <td>0808080808080</td>
-              </tr>
-              <tr>
-                <td>Herman</td>
-                <td>L</td>
-                <td>1234567812345678</td>
-                <td>8765432187654321</td>
-                <td>Keputih</td>
-                <td>0808080808080</td>
-              </tr>
-
+              @endforeach
             </tbody>
           </table>
         </div>

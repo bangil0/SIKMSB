@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kursus extends Model
 {
+    public $timestamps = false;
     protected $table = 'kursus';
-    protected $primarykey = 'id_kursus';
+    protected $primaryKey = 'id_kursus';
     protected $fillable = ['id_instruktur', 'id_peserta', 'id_mobil', 'kursus_ke', 'evaluasi', 'sudah_isi'];
 
     public function peserta()

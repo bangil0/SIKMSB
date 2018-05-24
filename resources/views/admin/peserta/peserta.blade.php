@@ -8,7 +8,7 @@
     <!-- Example DataTables Card-->
     <div class="card mb-3">
       <div class="card-header">
-        <i class="fa fa-table"></i>Peserta</div>
+        <h3>Peserta</h3></div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -19,37 +19,20 @@
                 <th>Jenis kelamin</th>
                 <th>No telp</th>
                 <th>tanggal lahir</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
+              @foreach($peserta as $p)
               <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>L</td>
-                <td>0800</td>
-                <td>12/12/12</td>
+                <td class="align-middle">{{$p->nama}}</td>
+                <td class="align-middle">{{$p->alamat}}</td>
+                <td class="align-middle">{{$p->jenis_kelamin}}</td>
+                <td class="align-middle">{{$p->nomor_telepon}}</td>
+                <td class="align-middle">{{$p->tanggal_lahir}}</td>
+                <td><a class="btn btn-primary btn-block" href="{{ url('/admin/peserta/'.$p->id_peserta.'/edit') }}">Edit</a></td>
               </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>L</td>
-                <td>0800</td>
-                <td>12/12/12</td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>L</td>
-                <td>0800</td>
-                <td>12/12/12</td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>L</td>
-                <td>0800</td>
-                <td>12/12/12</td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

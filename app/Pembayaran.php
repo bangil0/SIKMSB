@@ -8,7 +8,7 @@ use Eloquent;
 class Pembayaran extends Model
 {
     protected $table = 'pembayaran';
-    protected $primarykey = 'id_pembayaran';
+    protected $primaryKey = 'id_pembayaran';
     protected $fillable = ['id_peserta', 'jumlah_kursus', 'nomor_rekening', 'verifikasi'];
 
     public function peserta()

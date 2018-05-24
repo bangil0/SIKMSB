@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jadwal extends Model
 {
+    public $timestamps = false;
     protected $table = 'jadwal';
-    protected $primarykey = 'id_jadwal';
+    protected $primaryKey = 'id_jadwal';
+
     protected $fillable = ['hari', 'jam_mulai', 'jam_selesai'];
 
     public function peserta()
