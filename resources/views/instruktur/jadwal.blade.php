@@ -17,39 +17,20 @@
                 <th>Nama Peserta</th>
                 <th>Alamat</th>
                 <th>Hari</th>
-                <th>Waktu</th>
-                <th>Latihan ke</th>
+                <th>Waktu mulai</th>
+                <th>Waktu selesai</th>
               </tr>
             </thead>
             <tbody>
+              @foreach($peserta as $p)
               <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>Kamis</td>
-                <td>09:00</td>
-                <td>1</td>
+                <td>{{$p->nama}}</td>
+                <td>{{$p->alamat}}</td>
+                <td>{{$p->jadwal->hari}}</td>
+                <td>{{$p->jadwal->jam_mulai}}</td>
+                <td>{{$p->jadwal->jam_selesai}}</td>
               </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>Kamis</td>
-                <td>09:00</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>Kamis</td>
-                <td>09:00</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>Peserta 1</td>
-                <td>JL abc</td>
-                <td>Kamis</td>
-                <td>09:00</td>
-                <td>1</td>
-              </tr>
+              @endforeach
 
             </tbody>
           </table>

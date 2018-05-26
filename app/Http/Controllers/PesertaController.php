@@ -78,13 +78,13 @@ class PesertaController extends Controller
       $peserta->update([
         'nama' => $request['nama'],
         'jenis_kelamin' => $request['jenis_kelamin'],
-        'no_ktp' => $request['no_ktp'],
-        'no_sim' => $request['no_sim'],
+        'tanggal_lahir' => $request['tanggal_lahir'],
         'nomor_telepon' => $request['nomor_telepon'],
         'alamat' => $request['alamat'],
       ]);
 
       $user->update([
+        'nama' => $request['nama'],
         'email' => $request['email'],
       ]);
 

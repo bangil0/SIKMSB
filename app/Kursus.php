@@ -13,16 +13,16 @@ class Kursus extends Model
 
     public function peserta()
     {
-      return $this->belongsTo('App\Peserta');
+      return $this->belongsTo('App\Peserta', 'id_peserta');
     }
 
     public function mobil()
     {
-      return $this->belongsTo('App\Mobil');
+      return $this->belongsTo('App\Mobil', 'id_mobil');
     }
 
     public function instruktur()
     {
-      return $this->belongsTo('App\Instrukur');
+      return $this->belongsTo('App\Instrukur', 'id_instruktur');
     }
 }

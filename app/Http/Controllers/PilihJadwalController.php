@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Jadwal;
+use App\User;
 use App\Peserta;
-use App\Instruktur;
 use Auth;
 
-class JadwalController extends Controller
+class PilihJadwalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +17,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::paginate(10);
-        return view('admin.jadwal.jadwal', ['jadwal' => $jadwal]);
-    }
-
-    public function lihatJadwal()
-    {
-        $id_instruktur = Instruktur::where('id', Auth::user()->id)->value('id_instruktur');
-        $peserta = Peserta::where('id_instruktur', $id_instruktur)->get();
-        //return $id_instruktur;
-        return view('instruktur.jadwal', ['peserta' => $peserta]);
+        $jadwal = Jadwal::get();
+        return view('peserta.jadwal', ['jadwal' => $jadwal]);
     }
 
     /**
@@ -36,7 +28,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('admin.jadwal.create');
+        //
     }
 
     /**
@@ -47,8 +39,10 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        $jadwal = Jadwal::create($request->all());
-        return redirect('/admin/jadwal');
+      $user = User::where('email', Auth::user()->email)->value('id');
+      $id_peserta = Peserta::where('id', $user)->value('id_peserta');
+      $pembayaran = Peserta::where('id', Auth::user()->id)->update(['id_jadwal' => $request->id_jadwal]);
+      return redirect('/home');
     }
 
     /**
@@ -70,8 +64,7 @@ class JadwalController extends Controller
      */
     public function edit($id)
     {
-        $jadwal = Jadwal::findorfail($id);
-        return view("admin.jadwal.edit", ['jadwal' => $jadwal]);
+        //
     }
 
     /**
@@ -83,9 +76,7 @@ class JadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $jadwal = Jadwal::findorfail($id);
-      $jadwal->update($request->all());
-      return redirect('/admin/jadwal');
+        //
     }
 
     /**

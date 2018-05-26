@@ -13,6 +13,6 @@ class Mobil extends Model
 
     public function kursus()
     {
-      return $this->hasMany('App\Kursus');
+      return $this->hasMany('App\Kursus', 'id_mobil');
     }
 }

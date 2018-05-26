@@ -20,31 +20,27 @@ Route::get('/login', function () {
     return redirect('/#login');
 });
 
-Route::resource('/admin/verifikasi', 'VerifikasiController');
-Route::resource('/admin/pembayaran', 'PembayaranController');
-Route::resource('/admin/jadwal', 'JadwalController');
-Route::resource('/admin/mobil', 'MobilController');
-Route::resource('/admin/instruktur', 'InstrukturController');
-Route::resource('/admin/peserta', 'PesertaController');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 //Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', 'HomeController@index')->name('home');
-    //Route::group(['middleware'=>['admin']],function(){
-        Route::get('/admin', function () {
-          return view('admin\login');
-        });
-    //});
-    //Route::group(['middleware'=>['peserta']],function(){
+
+    Route::group(['middleware'=>['admin']],function(){
+        Route::resource('/admin/verifikasi', 'VerifikasiController');
+        Route::resource('/admin/pembayaran', 'PembayaranController');
+        Route::resource('/admin/jadwal', 'JadwalController');
+        Route::resource('/admin/mobil', 'MobilController');
+        Route::resource('/admin/instruktur', 'InstrukturController');
+        Route::resource('/admin/peserta', 'PesertaController');
+    });
+
+    Route::group(['middleware'=>['peserta']],function(){
+        Route::post('/masukkan-rekening', 'MasukkanRekeningController@update');
         Route::get('/masukkan-rekening/{id}', 'MasukkanRekeningController@show');
 
-        Route::post('/masukkan-rekening/{id}', 'MasukkanRekeningController@update');
-        // Route::get('/home', function () {
-        //     return view('peserta.home');
-        // });
-        Route::get('/jadwal', function () {
-            return view('peserta.jadwal');
-        });
+        Route::get('/jadwal', 'PilihJadwalController@index');
+        Route::post('/jadwal', 'PilihJadwalController@store');
+
         Route::get('/menunggu-bayar', function () {
             return view('peserta.menunggu-bayar');
         });
@@ -54,17 +50,10 @@ Route::get('/logout', 'Auth\LoginController@logout');
         Route::get('/user/evaluasi1', function () {
             return view('peserta.evaluasi');
         });
-    //});
-    //Route::group(['middleware'=>['instruktur']],function(){
-        Route::get('/instruktur', function () {
-            return view('instruktur\login');
-        });
-        Route::get('/instruktur/jadwal', function () {
-            return view('instruktur\jadwal');
-        });
+    });
+    Route::group(['middleware'=>['instruktur']],function(){
 
-        Route::get('/instruktur/evaluasi', function () {
-            return view('instruktur\evaluasi');
-        });
-    //});
+        Route::get('/instruktur/jadwal', 'JadwalController@lihatJadwal');
+        Route::resource('/instruktur/evaluasi', 'KursusController');
+    });
 //});

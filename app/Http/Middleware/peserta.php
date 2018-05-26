@@ -13,9 +13,9 @@ class peserta
      */
     public function handle($request, Closure $next)
     {
-        //if (Auth::user())
+        if (Auth::user())
         {
-            //if( Auth::user()->role == '0')
+            if( Auth::user()->role == 'P')
             {
                 return $next($request);
             }

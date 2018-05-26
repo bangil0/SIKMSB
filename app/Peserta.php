@@ -24,7 +24,7 @@ class Peserta extends Model
 
     public function kursus()
     {
-      return $this->hasMany('App\Kursus');
+      return $this->hasMany('App\Kursus', 'id_peserta');
     }
 
     public function user()

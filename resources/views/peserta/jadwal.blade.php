@@ -10,111 +10,25 @@
         <p>Kursus akan dilaksanakan 1 kali dalam seminggu selama 90 menit</p>
         <hr class="bottom-line">
       </div>
+      @foreach($jadwal as $j)
       <div class="col-md-3 col-sm-3">
         <div class="price-table">
           <!-- Plan  -->
           <div class="pricing-head">
-            <h4>Senin</h4>
-            <h5>Waktu : 09:00-10:30</h5>
-            <h5>instruktur : herman</h5>
+            <h4>{{$j->hari}}</h4>
+            <h5>Waktu : {{$j->jam_mulai}}-{{$j->jam_selesai}}</h5>
           </div>
 
           <!-- Plean Detail -->
           <div class="price-in mart-15">
-            <a href="/user/evaluasi1" class="btn btn-bg green btn-block">Pilih</a>
+            <form method="POST" action="/jadwal">
+              {{ csrf_field() }}
+              <input name="id_jadwal" type="hidden" value="{{$j->id_jadwal}}">
+            <input  class="btn btn-bg green btn-block" value="Simpan" type="submit">
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-3">
-        <div class="price-table">
-          <!-- Plan  -->
-          <div class="pricing-head">
-            <h4>Selasa</h4>
-            <h5>Waktu : 09:00-10:30</h5>
-            <h5>instruktur : herman</h5>
-          </div>
-
-          <!-- Plean Detail -->
-          <div class="price-in mart-15">
-            <a href="#" class="btn btn-bg yellow btn-block">Pilih</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3">
-        <div class="price-table">
-          <!-- Plan  -->
-          <div class="pricing-head">
-            <h4>Rabu</h4>
-            <h5>Waktu : 09:00-10:30</h5>
-            <h5>instruktur : herman</h5>
-          </div>
-
-          <!-- Plean Detail -->
-          <div class="price-in mart-15">
-            <a href="#" class="btn btn-bg red btn-block">Pilih</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3">
-        <div class="price-table">
-          <!-- Plan  -->
-          <div class="pricing-head">
-            <h4>Kamis</h4>
-            <h5>Waktu : 09:00-10:30</h5>
-            <h5>instruktur : herman</h5>
-          </div>
-
-          <!-- Plean Detail -->
-          <div class="price-in mart-15">
-            <a href="#" class="btn btn-bg red btn-block">Pilih</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3">
-        <div class="price-table">
-          <!-- Plan  -->
-          <div class="pricing-head">
-            <h4>Jumat</h4>
-            <h5>Waktu : 09:00-10:30</h5>
-            <h5>instruktur : herman</h5>
-          </div>
-
-          <!-- Plean Detail -->
-          <div class="price-in mart-15">
-            <a href="#" class="btn btn-bg red btn-block">Pilih</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3">
-        <div class="price-table">
-          <!-- Plan  -->
-          <div class="pricing-head">
-            <h4>Sabtu</h4>
-            <h5>Waktu : 09:00-10:30</h5>
-            <h5>instruktur : herman</h5>
-          </div>
-
-          <!-- Plean Detail -->
-          <div class="price-in mart-15">
-            <a href="#" class="btn btn-bg red btn-block">Pilih</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-3">
-        <div class="price-table">
-          <!-- Plan  -->
-          <div class="pricing-head">
-            <h4>Minggu</h4>
-            <h5>Waktu : 09:00-10:30</h5>
-            <h5>instruktur : herman</h5>
-          </div>
-
-          <!-- Plean Detail -->
-          <div class="price-in mart-15">
-            <a href="#" class="btn btn-bg red btn-block">Pilih</a>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
 </section>

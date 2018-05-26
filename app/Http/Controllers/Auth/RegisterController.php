@@ -86,8 +86,9 @@ class RegisterController extends Controller
           'sisa_kursus' => '0',
         ]);
 
+        $id_peserta = Peserta::where('id', $user)->value('id_peserta');
         Pembayaran::create([
-          'id_peserta' => $user,
+          'id_peserta' => $id_peserta ,
           'jumlah_kursus' => $data['jumlah_pertemuan'],
           'verifikasi' => '0',
         ]);

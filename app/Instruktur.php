@@ -23,7 +23,7 @@ class Instruktur extends Model
 
     public function kursus()
     {
-      return $this->hasMany('App\kursus');
+      return $this->hasMany('App\kursus', 'id_instruktur');
     }
 
     public function user()

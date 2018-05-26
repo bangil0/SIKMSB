@@ -101,6 +101,7 @@ class InstrukturController extends Controller
       ]);
 
       $user->update([
+        'nama' => $request['nama'],
         'email' => $request['email'],
       ]);
 

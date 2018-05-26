@@ -14,7 +14,7 @@
             <div class="form-row">
               <div class="col-md-12">
                 <label>Nama</label>
-                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" value="{{$peserta->nama}}">
+                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" name="nama" value="{{$peserta->nama}}">
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@
               </div>
               <div class="col-md-6">
                 <label>Tanggal lahir</label>
-                <input class="form-control" id="exampleInputLastName" type="date" aria-describedby="nameHelp" value="{{$peserta->tanggal_lahir}}">
+                <input class="form-control" id="exampleInputLastName" type="date" aria-describedby="nameHelp" name="tanggal_lahir" value="{{$peserta->tanggal_lahir}}">
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
             <div class="form-row">
               <div class="col-md-12">
                 <label>No Telepon</label>
-                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" value="{{$peserta->nomor_telepon}}">
+                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" name="nomor_telepon" value="{{$peserta->nomor_telepon}}">
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@
             <div class="form-row">
               <div class="col-md-12">
                 <label>Alamat</label>
-                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" value="{{$peserta->alamat}}">
+                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" name="alamat" value="{{$peserta->alamat}}">
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="login.html">Simpan</a>
+          <input class="btn btn-primary btn-block" value="Simpan" type="submit">
         </form>
       </div>
     </div>
